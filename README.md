@@ -196,8 +196,8 @@ To check everything is fine, access to the folder and run the command below:
 The output should be:
 
 ```
-On branch master
-Your branch is up to date with 'origin/master'.
+On branch main
+Your branch is up to date with 'origin/main'.
 
 nothing to commit, working tree clean
 ```
