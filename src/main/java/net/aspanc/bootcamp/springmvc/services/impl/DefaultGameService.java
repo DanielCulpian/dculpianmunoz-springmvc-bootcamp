@@ -1,16 +1,18 @@
-package net.aspanc.bootcamp.springmvc.services;
+package net.aspanc.bootcamp.springmvc.services.impl;
 
 import net.aspanc.bootcamp.springmvc.daos.GamesDao;
 import net.aspanc.bootcamp.springmvc.model.GameModel;
-import org.springframework.beans.factory.annotation.Autowired;
+import net.aspanc.bootcamp.springmvc.services.GameService;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class DefaultGameService implements GameService{
-    @Autowired
+public class DefaultGameService implements GameService {
+
+    @Resource
     private GamesDao gameDao;
 
     @Override
@@ -25,7 +27,7 @@ public class DefaultGameService implements GameService{
 
     @Override
     public List<GameModel> findByTitle(String title) {
-        return gameDao.findByTitle(title);
+        return gameDao.findByTitleIgnoreCase(title);
     }
 
     @Override
