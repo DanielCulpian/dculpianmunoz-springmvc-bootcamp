@@ -6,5 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface GamesDao extends JpaRepository<GameModel, Long> {
+
     List<GameModel> findByTitle(String title);
 }
