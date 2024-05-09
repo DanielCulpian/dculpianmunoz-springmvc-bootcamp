@@ -27,7 +27,7 @@ public class GameServiceTests {
         List<GameModel> games = gameService.findAll();
         if(games.isEmpty()) {
             gameModelAux.setTitle("A");
-            gameModelAux.setDescription("B");
+            gameModelAux.setDescription("B2");
             gameModelAux.setSteamId(1);
             gameService.save(gameModelAux);
         }
