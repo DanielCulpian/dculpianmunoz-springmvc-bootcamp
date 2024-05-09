@@ -68,6 +68,6 @@ public class GameServiceTests {
     @Test
     public void deleteGameModelTest(){
         gameService.delete(gameModelAux.getId());
-        Assert.assertFalse(gameService.findById(gameModelAux.getId()).isPresent());
+        Assert.assertTrue(gameService.findById(gameModelAux.getId()).isEmpty()  );
     }
 }
