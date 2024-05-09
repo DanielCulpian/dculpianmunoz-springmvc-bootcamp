@@ -1,7 +1,7 @@
 package net.aspanc.bootcamp.springmvc.services.impl;
 
 import net.aspanc.bootcamp.springmvc.daos.GamesDao;
-import net.aspanc.bootcamp.springmvc.model.GameModel;
+import net.aspanc.bootcamp.springmvc.models.GameModel;
 import net.aspanc.bootcamp.springmvc.services.GameService;
 import org.springframework.stereotype.Service;
 
