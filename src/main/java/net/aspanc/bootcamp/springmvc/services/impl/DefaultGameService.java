@@ -36,7 +36,7 @@ public class DefaultGameService implements GameService {
     }
 
     @Override
-    public Optional<GameModel> save(GameModel gameModel) {
-        return gameDao.findById(gameModel.getId());
+    public GameModel save(GameModel gameModel) {
+        return gameDao.save(gameModel);
     }
 }

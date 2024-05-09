@@ -1,5 +1,6 @@
 package net.aspanc.bootcamp.springmvc.services;
 
+import net.aspanc.bootcamp.springmvc.daos.GamesDao;
 import net.aspanc.bootcamp.springmvc.models.GameModel;
 
 import java.util.List;
@@ -15,5 +16,5 @@ public interface GameService {
 
     void delete(Long id);
 
-    Optional<GameModel> save(GameModel gameModel);
+    GameModel save(GameModel gameModel);
 }
