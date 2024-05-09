@@ -1,7 +1,6 @@
-package net.aspanc.bootcamp.springmvc;
+package net.aspanc.bootcamp.springmvc.services;
 
 import net.aspanc.bootcamp.springmvc.models.GameModel;
-import net.aspanc.bootcamp.springmvc.services.GameService;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
