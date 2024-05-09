@@ -24,10 +24,13 @@ public class GameServiceTests {
 
     @Before
     public void setUp(){
-        gameModelAux.setTitle("A");
-        gameModelAux.setDescription("B");
-        gameModelAux.setSteamId(1);
-        gameService.save(gameModelAux);
+        List<GameModel> games = gameService.findAll();
+        if(games.isEmpty()) {
+            gameModelAux.setTitle("A");
+            gameModelAux.setDescription("B");
+            gameModelAux.setSteamId(1);
+            gameService.save(gameModelAux);
+        }
     }
 
     @After
