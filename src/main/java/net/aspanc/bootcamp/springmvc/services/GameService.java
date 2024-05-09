@@ -1,6 +1,5 @@
 package net.aspanc.bootcamp.springmvc.services;
 
-import net.aspanc.bootcamp.springmvc.daos.GamesDao;
 import net.aspanc.bootcamp.springmvc.models.GameModel;
 
 import java.util.List;
