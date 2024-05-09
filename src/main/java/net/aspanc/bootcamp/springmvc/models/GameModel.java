@@ -1,4 +1,4 @@
-package net.aspanc.bootcamp.springmvc.model;
+package net.aspanc.bootcamp.springmvc.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
