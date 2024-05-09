@@ -3,6 +3,7 @@ package net.aspanc.bootcamp.springmvc;
 import net.aspanc.bootcamp.springmvc.models.GameModel;
 import net.aspanc.bootcamp.springmvc.services.GameService;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,40 +21,42 @@ public class SpringmvcApplicationTests {
 
     private final GameModel gameModelAux = new GameModel();
 
+    @Before
+    public void setUp(){
+        gameModelAux.setTitle("A");
+        gameModelAux.setDescription("B");
+        gameModelAux.setSteamId(1);
+        gameService.save(gameModelAux);
+    }
+
     @Test
     public void createGameModelTest(){
-        gameModelAux.setTitle("A");
         Assert.assertNotNull(gameService.save(gameModelAux));
     }
 
     @Test
     public void retrieveGameModel(){
-        gameModelAux.setTitle("A");
-        Assert.assertNotNull(gameService.save(gameModelAux));
-
         GameModel gameModel = gameService.findByTitle("A").get(0);
         Assert.assertNotNull(gameModel);
 
         gameModel = gameService.findAll().get(0);
         Assert.assertNotNull(gameModel);
+        Assert.assertNotNull(gameModel.getId());
+        Assert.assertNotNull(gameModel.getTitle());
+        Assert.assertNotNull(gameModel.getDescription());
+        Assert.assertNotNull(gameModel.getSteamId());
     }
 
     @Test
     public void updateGameModelTest(){
-        gameModelAux.setTitle("A");
-        Assert.assertNotNull(gameService.save(gameModelAux));
-
         GameModel gameModel = gameService.findByTitle("A").get(0);
         Assert.assertNotNull(gameModel);
-        gameModel.setDescription("B");
+        gameModel.setDescription("C");
         Assert.assertNotNull(gameService.save(gameModel));
     }
 
     @Test
     public void deleteGameModelTest(){
-        gameModelAux.setTitle("A");
-        Assert.assertNotNull(gameService.save(gameModelAux));
-
         GameModel gameModel = gameService.findByTitle("A").get(0);
         Assert.assertNotNull(gameModel);
 
