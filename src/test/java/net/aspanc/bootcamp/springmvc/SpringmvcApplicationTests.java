@@ -28,6 +28,9 @@ public class SpringmvcApplicationTests {
 
     @Test
     public void retrieveGameModel(){
+        gameModelAux.setTitle("A");
+        Assert.assertNotNull(gameService.save(gameModelAux));
+
         GameModel gameModel = gameService.findByTitle("A").get(0);
         Assert.assertNotNull(gameModel);
     }
