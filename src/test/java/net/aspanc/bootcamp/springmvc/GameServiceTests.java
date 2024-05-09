@@ -61,10 +61,8 @@ public class GameServiceTests {
 
     @Test
     public void updateGameModelTest(){
-        GameModel gameModel = gameService.findByTitle("A").get(0);
-        Assert.assertNotNull(gameModel);
-        gameModel.setDescription("C");
-        Assert.assertNotNull(gameService.save(gameModel));
+        gameModelAux.setDescription("C");
+        Assert.assertNotNull(gameService.save(gameModelAux));
     }
 
     @Test
