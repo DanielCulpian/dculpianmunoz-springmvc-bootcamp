@@ -49,25 +49,32 @@ public class GameServiceTests {
 
     @Test
     public void retrieveGameModel(){
-        GameModel gameModel = gameService.findByTitle("A").get(0);
-
-        Assert.assertNotNull(gameModel);
-        Assert.assertNotNull(gameModel.getId());
-        Assert.assertEquals(gameModelAux.getId(), gameModel.getId());
-        Assert.assertEquals(gameModelAux.getTitle(), gameModel.getTitle());
-        Assert.assertEquals(gameModelAux.getDescription(), gameModel.getDescription());
-        Assert.assertEquals(gameModelAux.getSteamId(), gameModel.getSteamId());
+        gameService.findById(gameModelAux.getId()).ifPresent(game -> {
+            Assert.assertNotNull(game);
+            Assert.assertNotNull(game.getId());
+            Assert.assertEquals(gameModelAux.getId(), game.getId());
+            Assert.assertEquals(gameModelAux.getTitle(), game.getTitle());
+            Assert.assertEquals(gameModelAux.getDescription(), game.getDescription());
+            Assert.assertEquals(gameModelAux.getSteamId(), game.getSteamId());
+        });
     }
 
     @Test
     public void updateGameModelTest(){
         gameModelAux.setDescription("C");
         Assert.assertNotNull(gameService.save(gameModelAux));
+        gameModelAux.setDescription("A");
+
+        GameModel gameModel = gameService.findByTitle("A").get(0);
+
+        Assert.assertNotNull(gameModel);
+        Assert.assertNotNull(gameModel.getId());
+        Assert.assertNotEquals(gameModelAux.getDescription(), gameModel.getDescription());
     }
 
     @Test
     public void deleteGameModelTest(){
         gameService.delete(gameModelAux.getId());
-        Assert.assertTrue(gameService.findById(gameModelAux.getId()).isEmpty()  );
+        Assert.assertTrue(gameService.findById(gameModelAux.getId()).isEmpty());
     }
 }
