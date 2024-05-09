@@ -32,11 +32,11 @@ public class DefaultGameService implements GameService {
 
     @Override
     public void delete(Long id) {
-
+        gameDao.deleteById(id);
     }
 
     @Override
-    public void save(GameModel gameModel) {
-
+    public Optional<GameModel> save(GameModel gameModel) {
+        return gameDao.findById(gameModel.getId());
     }
 }

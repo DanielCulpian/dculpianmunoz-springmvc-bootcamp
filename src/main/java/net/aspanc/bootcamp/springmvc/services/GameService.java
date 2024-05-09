@@ -15,5 +15,5 @@ public interface GameService {
 
     void delete(Long id);
 
-    void save(GameModel gameModel);
+    Optional<GameModel> save(GameModel gameModel);
 }
