@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -39,11 +40,11 @@ public class GameServiceTests {
 
     @After
     public void cleaner(){
-        List<GameModel> games = gameService.findAll();
-        if(!games.isEmpty()){
-            GameModel gameModel = gameService.findByTitle(TITLE).get(0);
-            gameService.delete(gameModel.getId());
-        }
+        Optional<GameModel> optionalGameModel = gameService.findById(gameModelAux.getId());
+
+        optionalGameModel.ifPresent( game -> {
+            gameService.delete(game.getId());
+        });
     }
 
     @Test
