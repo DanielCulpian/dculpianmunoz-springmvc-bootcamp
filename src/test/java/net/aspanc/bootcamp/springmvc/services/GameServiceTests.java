@@ -17,8 +17,8 @@ public class GameServiceTests {
 
     private final static String TITLE = "A";
     private final static String DESCRIPTION = "B1";
-    private final static Integer STEAM_ID = 1;
     private final static String NEW_DESCRIPTION = "C";
+    private final static Integer STEAM_ID = 1;
 
     @Resource
     private GameService gameService;
