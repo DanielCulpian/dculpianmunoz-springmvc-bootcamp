@@ -8,6 +8,7 @@ import org.springframework.util.Assert;
 
 @Component
 public class GameDataToModelConverter implements Converter<GameDto, GameModel> {
+
     @Override
     public GameModel convert(GameDto gameDto) {
 
