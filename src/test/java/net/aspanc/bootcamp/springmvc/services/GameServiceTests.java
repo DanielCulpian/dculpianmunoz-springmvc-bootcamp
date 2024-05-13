@@ -16,20 +16,25 @@ import java.util.List;
 @SpringBootTest
 public class GameServiceTests {
 
+    private final String TITLE = "A";
+
+    private final String DESCRIPTION = "A";
+
+    private final Integer STEAM_ID = 1;
+
     @Resource
     private GameService gameService;
 
-    private final GameModel gameModelAux = new GameModel();
+    private GameModel gameModelAux;
 
     @Before
     public void setUp(){
-        List<GameModel> games = gameService.findAll();
-        if(games.isEmpty()) {
-            gameModelAux.setTitle("A");
-            gameModelAux.setDescription("B2");
-            gameModelAux.setSteamId(1);
-            gameService.save(gameModelAux);
-        }
+        gameModelAux = new GameModel();
+
+        gameModelAux.setTitle(TITLE);
+        gameModelAux.setDescription(DESCRIPTION);
+        gameModelAux.setSteamId(STEAM_ID);
+        gameService.save(gameModelAux);
     }
 
     @After
@@ -42,7 +47,7 @@ public class GameServiceTests {
     }
 
     @Test
-    public void createGameModelTest(){
+    public void saveGameModel(){
         Assert.assertNotNull(gameService.save(gameModelAux));
     }
 
@@ -52,14 +57,14 @@ public class GameServiceTests {
             Assert.assertNotNull(game);
             Assert.assertNotNull(game.getId());
             Assert.assertEquals(gameModelAux.getId(), game.getId());
-            Assert.assertEquals(gameModelAux.getTitle(), game.getTitle());
-            Assert.assertEquals(gameModelAux.getDescription(), game.getDescription());
-            Assert.assertEquals(gameModelAux.getSteamId(), game.getSteamId());
+            Assert.assertEquals(TITLE, game.getTitle());
+            Assert.assertEquals(DESCRIPTION, game.getDescription());
+            Assert.assertEquals(STEAM_ID, game.getSteamId());
         });
     }
 
     @Test
-    public void updateGameModelTest(){
+    public void updateGameModel(){
         gameModelAux.setDescription("C");
         Assert.assertNotNull(gameService.save(gameModelAux));
         gameModelAux.setDescription("A");
@@ -72,7 +77,7 @@ public class GameServiceTests {
     }
 
     @Test
-    public void deleteGameModelTest(){
+    public void deleteGameModel(){
         gameService.delete(gameModelAux.getId());
         Assert.assertTrue(gameService.findById(gameModelAux.getId()).isEmpty());
     }
