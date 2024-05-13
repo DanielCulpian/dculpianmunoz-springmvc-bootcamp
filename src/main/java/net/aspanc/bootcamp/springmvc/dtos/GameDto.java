@@ -15,7 +15,7 @@ public class GameDto {
 
     private String title;
 
-    private String description;
+    private String descrition;
 
     private Integer steamId;
 
