@@ -11,7 +11,6 @@ public class GameDataToModelConverter implements Converter<GameDto, GameModel> {
 
     @Override
     public GameModel convert(GameDto gameDto) {
-
         Assert.notNull(gameDto, "The dto object is null!");
 
         return GameModel.builder()
