@@ -10,7 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
-import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -19,6 +18,7 @@ public class GameServiceTests {
     private final static String TITLE = "A";
     private final static String DESCRIPTION = "B1";
     private final static Integer STEAM_ID = 1;
+    private final static String NEW_DESCRIPTION = "C";
 
     @Resource
     private GameService gameService;
@@ -63,18 +63,19 @@ public class GameServiceTests {
 
     @Test
     public void updateGameModel(){
-        String newDescription = "C";
-        gameModelAux.setDescription(newDescription);
+        gameModelAux.setDescription(NEW_DESCRIPTION);
         GameModel gameModel = gameService.save(gameModelAux);
+
         Assert.assertNotNull(gameModel);
         gameModelAux.setDescription(DESCRIPTION);
 
-        Assert.assertEquals(newDescription, gameModel.getDescription());
+        Assert.assertEquals(NEW_DESCRIPTION, gameModel.getDescription());
     }
 
     @Test
     public void deleteGameModel(){
         gameService.delete(gameModelAux.getId());
+
         Assert.assertTrue(gameService.findById(gameModelAux.getId()).isEmpty());
     }
 }
