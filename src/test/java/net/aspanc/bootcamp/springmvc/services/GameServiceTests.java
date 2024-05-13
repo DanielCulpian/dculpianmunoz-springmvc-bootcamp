@@ -18,7 +18,7 @@ public class GameServiceTests {
 
     private final String TITLE = "A";
 
-    private final String DESCRIPTION = "A";
+    private final String DESCRIPTION = "B1";
 
     private final Integer STEAM_ID = 1;
 
@@ -41,7 +41,7 @@ public class GameServiceTests {
     public void cleaner(){
         List<GameModel> games = gameService.findAll();
         if(!games.isEmpty()){
-            GameModel gameModel = gameService.findByTitle("A").get(0);
+            GameModel gameModel = gameService.findByTitle(TITLE).get(0);
             gameService.delete(gameModel.getId());
         }
     }
@@ -67,9 +67,9 @@ public class GameServiceTests {
     public void updateGameModel(){
         gameModelAux.setDescription("C");
         Assert.assertNotNull(gameService.save(gameModelAux));
-        gameModelAux.setDescription("A");
+        gameModelAux.setDescription(TITLE);
 
-        GameModel gameModel = gameService.findByTitle("A").get(0);
+        GameModel gameModel = gameService.findByTitle(TITLE).get(0);
 
         Assert.assertNotNull(gameModel);
         Assert.assertNotNull(gameModel.getId());
