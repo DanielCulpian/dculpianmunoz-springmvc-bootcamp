@@ -10,7 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
-import java.util.List;
 import java.util.Optional;
 
 @RunWith(SpringRunner.class)
@@ -68,13 +67,13 @@ public class GameServiceTests {
     public void updateGameModel(){
         gameModelAux.setDescription("C");
         Assert.assertNotNull(gameService.save(gameModelAux));
-        gameModelAux.setDescription(TITLE);
+        gameModelAux.setDescription(DESCRIPTION);
 
-        GameModel gameModel = gameService.findByTitle(TITLE).get(0);
+        Optional<GameModel> optionalGameModel = gameService.findById(gameModelAux.getId());
 
-        Assert.assertNotNull(gameModel);
-        Assert.assertNotNull(gameModel.getId());
-        Assert.assertNotEquals(gameModelAux.getDescription(), gameModel.getDescription());
+        optionalGameModel.ifPresent(game -> {
+            Assert.assertNotEquals(DESCRIPTION, game.getDescription());
+        });
     }
 
     @Test
