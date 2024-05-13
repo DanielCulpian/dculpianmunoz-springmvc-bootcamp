@@ -7,6 +7,11 @@ import org.springframework.core.convert.converter.Converter;
 public class GameDataToModelConverter implements Converter<GameDto, GameModel> {
     @Override
     public GameModel convert(GameDto gameDto) {
-        return null;
+        return  new GameModel(
+                gameDto.getId(),
+                gameDto.getTitle(),
+                gameDto.getDescription(),
+                gameDto.getSteamId()
+        );
     }
 }
