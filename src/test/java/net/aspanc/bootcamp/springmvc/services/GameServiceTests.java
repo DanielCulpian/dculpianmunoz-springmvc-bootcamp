@@ -53,14 +53,17 @@ public class GameServiceTests {
 
     @Test
     public void retrieveGameModel(){
-        gameService.findById(gameModelAux.getId()).ifPresent(game -> {
-            Assert.assertNotNull(game);
-            Assert.assertNotNull(game.getId());
-            Assert.assertEquals(gameModelAux.getId(), game.getId());
-            Assert.assertEquals(TITLE, game.getTitle());
-            Assert.assertEquals(DESCRIPTION, game.getDescription());
-            Assert.assertEquals(STEAM_ID, game.getSteamId());
-        });
+        gameService.findById(gameModelAux.getId()).ifPresentOrElse(
+                (game) -> {
+                    Assert.assertNotNull(game);
+                    Assert.assertNotNull(game.getId());
+                    Assert.assertEquals(gameModelAux.getId(), game.getId());
+                    Assert.assertEquals(TITLE, game.getTitle());
+                    Assert.assertEquals(DESCRIPTION, game.getDescription());
+                    Assert.assertEquals(STEAM_ID, game.getSteamId());
+                },
+                Assert::fail
+        );
     }
 
     @Test
