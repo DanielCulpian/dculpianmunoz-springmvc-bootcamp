@@ -15,10 +15,8 @@ public class GameFacadeImpl implements GameFacade {
 
     @Resource
     private Converter<GameModel, GameDto> gameModelToDataConverter;
-
     @Resource
     private Converter<GameDto, GameModel> gameDataToModelConverter;
-
     @Resource
     private GameService gameService;
 
