@@ -32,11 +32,7 @@ public class GameFacade implements GameFacadeLayer {
 
     @Override
     public Optional<GameDto> findById(Long id) {
-        GameDto[] gameDto = new GameDto[1];
-        gameService.findById(id).ifPresent(gameModel -> gameDto[0] = gameModelToDataConverter.convert(gameModel));
-
-        assert gameDto[0] != null;
-        return Optional.of(gameDto[0]);
+        return Optional.ofNullable(gameModelToDataConverter.convert(gameService.findById(id).get()));
     }
 
     @Override
