@@ -39,4 +39,5 @@ public class DefaultGameService implements GameService {
     public GameModel save(GameModel gameModel) {
         return gameDao.save(gameModel);
     }
+
 }
