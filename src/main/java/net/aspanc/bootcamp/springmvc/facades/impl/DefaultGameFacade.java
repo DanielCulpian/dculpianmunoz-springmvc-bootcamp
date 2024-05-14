@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class GameFacade implements net.aspanc.bootcamp.springmvc.facades.GameFacade {
+public class DefaultGameFacade implements net.aspanc.bootcamp.springmvc.facades.GameFacade {
 
     @Resource
     private Converter<GameModel, GameDto> gameModelToDataConverter;
