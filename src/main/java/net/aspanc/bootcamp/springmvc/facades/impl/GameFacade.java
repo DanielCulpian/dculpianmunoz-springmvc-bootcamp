@@ -1,7 +1,6 @@
 package net.aspanc.bootcamp.springmvc.facades.impl;
 
 import net.aspanc.bootcamp.springmvc.dtos.GameDto;
-import net.aspanc.bootcamp.springmvc.facades.GameFacade;
 import net.aspanc.bootcamp.springmvc.models.GameModel;
 import net.aspanc.bootcamp.springmvc.services.GameService;
 import org.springframework.core.convert.converter.Converter;
@@ -11,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class GameFacadeImpl implements GameFacade {
+public class GameFacade implements net.aspanc.bootcamp.springmvc.facades.GameFacade {
 
     @Resource
     private Converter<GameModel, GameDto> gameModelToDataConverter;
