@@ -14,10 +14,11 @@ public class GameModelToDataConverter implements Converter<GameModel, GameDto> {
         Assert.notNull(gameModel, "The model object is null!");
 
         return GameDto.builder()
-                .id(gameModel.getId())
-                .title(gameModel.getTitle())
-                .description(gameModel.getDescription())
-                .steamId(gameModel.getSteamId())
-                .build();
+                      .id(gameModel.getId())
+                      .title(gameModel.getTitle())
+                      .description(gameModel.getDescription())
+                      .steamId(gameModel.getSteamId())
+                      .build();
     }
+
 }

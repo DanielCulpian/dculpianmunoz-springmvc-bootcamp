@@ -16,4 +16,5 @@ public interface GameService {
     void delete(Long id);
 
     GameModel save(GameModel gameModel);
+
 }
