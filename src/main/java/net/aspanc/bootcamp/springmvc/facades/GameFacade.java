@@ -5,7 +5,7 @@ import net.aspanc.bootcamp.springmvc.dtos.GameDto;
 import java.util.List;
 import java.util.Optional;
 
-public interface GameFacadeLayer {
+public interface GameFacade {
 
     List<GameDto> findAll();
 
@@ -16,4 +16,5 @@ public interface GameFacadeLayer {
     void delete(Long id);
 
     GameDto save(GameDto gameDto);
+
 }
