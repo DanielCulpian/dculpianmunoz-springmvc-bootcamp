@@ -4,8 +4,10 @@ import net.aspanc.bootcamp.springmvc.facades.GameFacade;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.annotation.Resource;
+import java.util.stream.Collectors;
 
 @Controller
 public class GameController {
@@ -19,4 +21,14 @@ public class GameController {
 
         return "index";
     }
+
+    @GetMapping(value = "/game/{id}")
+    public String showGame(@PathVariable Long id, Model model) {
+        model.addAttribute("games", gameFacade.findById(id)
+                                              .stream()
+                                              .collect(Collectors.toList()));
+
+        return "gameDetails";
+    }
+
 }
