@@ -2,7 +2,7 @@ package net.aspanc.bootcamp.springmvc.controllers;
 
 import net.aspanc.bootcamp.springmvc.facades.GameFacade;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.annotation.Resource;
@@ -14,11 +14,9 @@ public class GameController {
     private GameFacade gameFacade;
 
     @GetMapping(value = "/")
-    public String showGames(ModelMap model) {
+    public String showGames(Model model) {
         model.addAttribute("games", gameFacade.findAll());
 
         return "index";
-
     }
-
 }
