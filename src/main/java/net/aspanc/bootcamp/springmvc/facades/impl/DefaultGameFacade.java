@@ -5,12 +5,14 @@ import net.aspanc.bootcamp.springmvc.facades.GameFacade;
 import net.aspanc.bootcamp.springmvc.models.GameModel;
 import net.aspanc.bootcamp.springmvc.services.GameService;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Component
 public class DefaultGameFacade implements GameFacade {
 
     @Resource
