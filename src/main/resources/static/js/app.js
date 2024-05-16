@@ -3,6 +3,8 @@ function deleteAsk(id) {
         fetch("game/delete/" + id, {method: 'DELETE'}).then((response) => {
             if (response.ok) {
                 location.replace('/')
+            }else{
+                location.replace("/game/404")
             }
         })
     }
