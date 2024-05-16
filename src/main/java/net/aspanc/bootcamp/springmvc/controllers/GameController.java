@@ -1,8 +1,10 @@
 package net.aspanc.bootcamp.springmvc.controllers;
 
 import net.aspanc.bootcamp.springmvc.facades.GameFacade;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -31,4 +33,10 @@ public class GameController {
         return "gameDetails";
     }
 
+    @DeleteMapping(value = "/game/delete/{id}")
+    public ResponseEntity<Long> deleteGame(@PathVariable Long id) {
+        gameFacade.delete(id);
+        return ResponseEntity.ok()
+                             .build();
+    }
 }
