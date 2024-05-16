@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <meta charset="ISO-8859-1">
         <title>Games</title>
+        <link href="/css/index.css" rel="stylesheet"/>
     </head>
     <body>
         <form class="smart-form">
@@ -15,14 +17,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <c:forEach var="game" items="${games}">
-                        <tr>
-                            <td>${game.id}</td>
-                            <td>${game.title}</td>
-                        </tr>
-                    </c:forEach>
+                <c:forEach var="game" items="${games}">
+                    <tr>
+                        <td><a href="/game/${game.id}">${game.id}</a></td>
+                        <td><a href="/game/${game.id}">${game.title}</a></td>
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </form>
-    <body>
+    </body>
 </html>
