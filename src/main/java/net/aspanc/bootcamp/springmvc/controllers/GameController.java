@@ -35,16 +35,19 @@ public class GameController {
 
     @DeleteMapping(value = "/game/delete/{id}")
     public ResponseEntity<Long> deleteGame(@PathVariable Long id) {
-        if(gameFacade.existsById(id)){
+        if (gameFacade.existsById(id)) {
             gameFacade.delete(id);
             return ResponseEntity.ok()
-                    .build();
-        }else
-            return ResponseEntity.notFound().build();
+                                 .build();
+        } else {
+            return ResponseEntity.notFound()
+                                 .build();
+        }
     }
 
-    @GetMapping(value = "/game/404")
+    @GetMapping(value = "/error/404")
     public String show404() {
-        return "notFoundGame";
+        return "notFound";
     }
+
 }

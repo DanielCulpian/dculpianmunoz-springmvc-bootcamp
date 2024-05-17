@@ -4,10 +4,12 @@ body {
     margin: 0;
     padding: 0;
 }
-a{
+
+a {
     text-decoration: none;
     color: black;
 }
+
 #smart-div {
     width: 80%;
     margin: 50px auto;
@@ -16,21 +18,26 @@ a{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
+
 table {
     width: 100%;
     border-collapse: collapse;
 }
+
 th, td {
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
+
 th {
     background-color: #f2f2f2;
 }
+
 tr:hover {
     background-color: #f1f1f1;
 }
+
 .gameTable {
     width: 100%;
     margin: 20px 0;
