@@ -17,4 +17,6 @@ public interface GameFacade {
 
     GameDto save(GameDto gameDto);
 
+    Boolean existsById(Long id);
+
 }
