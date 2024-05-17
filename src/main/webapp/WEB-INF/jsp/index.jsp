@@ -9,7 +9,14 @@
         <script src="/js/app.js" defer></script>
     </head>
     <body>
-        <form class="search-container" action="/game" method="get">
+        <header class="header">
+            <div class="logo">Steam Games</div>
+            <nav>
+                <a href="#home">Home</a>
+                <button>Add New Game</button>
+            </nav>
+        </header>
+        <form id="home" class="search-container" action="/game" method="get">
             <input type="text" class="search-box" id="search-input" name="title" placeholder="Search by title...">
             <button class="search-button" type="submit">Search</button>
         </form>
