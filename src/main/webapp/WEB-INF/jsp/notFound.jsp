@@ -7,13 +7,13 @@
         <title>404 - Not Found</title>
         <link href="/css/404.css" rel="stylesheet"/>
     </head>
-        <body>
-            <div class="container">
-                <div class="game-controller">🎮</div>
-                <h1>404</h1>
-                <h2>Not Found</h2>
-                <p>Oops! It looks like the stuff you're looking for doesn't exist.</p>
-                <a href="<%= request.getContextPath() %>/">Return to Home</a>
-            </div>
-        </body>
+    <body>
+        <div class="container">
+            <div class="game-controller">🎮</div>
+            <h1>404</h1>
+            <h2>Not Found</h2>
+            <p>Oops! It looks like the stuff you're looking for doesn't exist.</p>
+            <a href="<%= request.getContextPath() %>/">Return to Home</a>
+        </div>
+    </body>
 </html>
