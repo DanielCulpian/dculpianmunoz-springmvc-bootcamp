@@ -99,12 +99,65 @@ tr:hover {
 
 .header nav a {
     color: white;
+    padding-top: 20px;
     text-decoration: none;
     font-size: 18px;
 }
 
 .header nav a:hover {
     border-bottom: 2px solid white;
+}
+
+.materialBtn {
+    display: inline-block;
+    position: relative;
+    padding: 12px 24px;
+    margin: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    background-color: #6200ea;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    transition: background-color 0.3s;
+}
+
+.materialBtn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 10%, transparent 10.01%) no-repeat;
+    transform: translate(-50%, -50%) scale(10);
+    transition: transform 0.5s, opacity 1s;
+    opacity: 0;
+}
+
+.materialBtn:active::before {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.6;
+    transition: 0s;
+}
+
+.materialBtn:hover {
+    background-color: #3700b3;
+}
+
+.materialBtn:focus {
+    box-shadow: 0 0 0 4px rgba(98, 0, 238, 0.4);
+}
+
+.deleteBtn {
+    padding: 6px 12px;
+    border: 1px solid red;
+    border-radius: 4px;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
 }
 
 /*Responsive Desing*/

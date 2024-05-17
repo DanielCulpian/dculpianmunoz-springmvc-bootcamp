@@ -13,7 +13,7 @@
             <div class="logo">Steam Games</div>
             <nav>
                 <a href="#home">Home</a>
-                <button>Add New Game</button>
+                <button class="materialBtn">Add New Game</button>
             </nav>
         </header>
         <form id="home" class="search-container" action="/game" method="get">
@@ -35,7 +35,7 @@
                             <td><a href="/game/${game.id}">${game.id}</a></td>
                             <td><a href="/game/${game.id}">${game.title}</a></td>
                             <td>
-                                <button onclick="deleteAsk(${game.id})">Delete</button>
+                                <button class="deleteBtn" onclick="deleteAsk(${game.id})">❌</button>
                             </td>
                         </tr>
                     </c:forEach>
