@@ -9,6 +9,10 @@
         <script src="/js/app.js" defer></script>
     </head>
     <body>
+        <form class="search-container" action="/game" method="get">
+            <input type="text" class="search-box" id="search-input" name="title" placeholder="Search by title...">
+            <button class="search-button" type="submit">Search</button>
+        </form>
         <div id="smart-div">
             <table class="gameTable">
                 <thead>

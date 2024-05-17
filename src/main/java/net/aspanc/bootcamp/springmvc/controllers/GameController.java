@@ -7,8 +7,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 @Controller
@@ -48,6 +50,12 @@ public class GameController {
     @GetMapping(value = "/error/404")
     public String show404() {
         return "notFound";
+    }
+
+    @GetMapping(value = "/game")
+    public String showGamesByTitle(@RequestParam String title, Model model){
+        model.addAttribute("games", new ArrayList<>(gameFacade.findByTitle(title)));
+        return "index";
     }
 
 }
