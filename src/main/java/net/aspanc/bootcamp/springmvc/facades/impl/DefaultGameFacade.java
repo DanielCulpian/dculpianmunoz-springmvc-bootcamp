@@ -55,4 +55,9 @@ public class DefaultGameFacade implements GameFacade {
         return gameModelToDataConverter.convert(gameModel);
     }
 
+    @Override
+    public Boolean existsById(Long id) {
+        return gameService.existsById(id);
+    }
+
 }

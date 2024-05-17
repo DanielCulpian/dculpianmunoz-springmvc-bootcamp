@@ -17,4 +17,6 @@ public interface GameService {
 
     GameModel save(GameModel gameModel);
 
+    Boolean existsById(Long id);
+
 }

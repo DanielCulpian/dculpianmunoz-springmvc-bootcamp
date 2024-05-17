@@ -40,4 +40,9 @@ public class DefaultGameService implements GameService {
         return gameDao.save(gameModel);
     }
 
+    @Override
+    public Boolean existsById(Long id) {
+        return gameDao.existsById(id);
+    }
+
 }
