@@ -10,7 +10,6 @@
     <body>
         <div class="form-overlay" id="popupOverlay">
             <form onsubmit="location.reload()" method="post" action="/game/new" class="form" id="popup">
-                <span class="close" id="closePopup">&times;</span>
                 <div class="form-content">
                     <p>Add a new Game</p>
                     <p>Please, specify all the arguments!</p>

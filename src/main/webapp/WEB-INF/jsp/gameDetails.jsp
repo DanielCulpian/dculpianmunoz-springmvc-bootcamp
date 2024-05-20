@@ -5,11 +5,11 @@
     <head>
         <meta charset="ISO-8859-1">
         <title>Game Details</title>
-        <link href="/css/index.css" rel="stylesheet"/>
+        <link href="/css/gameDetails.css" rel="stylesheet"/>
     </head>
     <body>
         <form class="smart-form">
-            <table class="tb-regist" id="eeMsg">
+            <table class="table">
                 <thead>
                 <tr>
                     <th>Id</th>
