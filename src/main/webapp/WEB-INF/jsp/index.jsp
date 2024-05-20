@@ -13,9 +13,24 @@
             <div class="logo">Steam Games</div>
             <nav>
                 <a href="#home">Home</a>
-                <button class="material-btn">Add New Game</button>
+                <button class="material-btn" onclick="openPopup()">Add New Game</button>
             </nav>
         </header>
+        <div class="popup-overlay" id="popupOverlay">
+            <form onsubmit="location.reload()" method="post" action="/game/new" class="popup" id="popup">
+                <span class="close" id="closePopup">&times;</span>
+                <div class="popup-content">
+                    <p>Add a new Game</p>
+                    <p>Please, specify all the arguments!</p>
+                    <div class="inputs">
+                        <input name="title" type="text" placeholder="Title" id="titleInput" required="required">
+                        <input name="description" type="text" placeholder="Description" id="descriptionInput" required="required">
+                        <input name="steamId" type="number" placeholder="Steam ID" id="numberInput" required="required">
+                    </div>
+                    <input class="popup-subm" type="submit" value="Save">
+                </div>
+            </form>
+        </div>
         <form id="home" class="search-container" action="/game" method="get">
             <input type="text" class="search-box" id="search-input" name="title" placeholder="Search by title...">
             <button class="search-button" type="submit">Search</button>
