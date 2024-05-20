@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import java.util.stream.Collectors;
@@ -25,7 +26,7 @@ public class GameController {
     }
 
     @GetMapping(value = "/game/{id}")
-    public String showGame(@PathVariable Long id, Model model) {
+    public String showGame(Model model, @PathVariable Long id) {
         model.addAttribute("games", gameFacade.findById(id)
                                               .stream()
                                               .collect(Collectors.toList()));
@@ -48,6 +49,12 @@ public class GameController {
     @GetMapping(value = "/error/404")
     public String show404() {
         return "notFound";
+    }
+
+    @GetMapping(value = "/game")
+    public String showGamesByTitle(Model model, @RequestParam String title) {
+        model.addAttribute("games", gameFacade.findByTitle(title));
+        return "index";
     }
 
 }

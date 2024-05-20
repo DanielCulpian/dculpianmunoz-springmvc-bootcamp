@@ -9,4 +9,3 @@ function deleteAsk(id) {
         })
     }
 }
-
