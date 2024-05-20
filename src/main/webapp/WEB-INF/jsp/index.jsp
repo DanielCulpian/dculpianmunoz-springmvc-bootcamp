@@ -21,7 +21,7 @@
             <button class="search-button" type="submit">Search</button>
         </form>
         <div id="smart-div">
-            <table class="gameTable">
+            <table class="game-table">
                 <thead>
                     <tr>
                         <th>Id</th>
