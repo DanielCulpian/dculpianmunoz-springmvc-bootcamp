@@ -61,7 +61,7 @@ public class GameController {
     }
 
     @PostMapping(value = "/game/new")
-    public String addNewGame(Model model, @ModelAttribute GameDto gameDto){
+    public String addNewGame(@ModelAttribute GameDto gameDto){
         gameDto = gameFacade.save(gameDto);
 
         return "redirect:/game/" + gameDto.getId();
