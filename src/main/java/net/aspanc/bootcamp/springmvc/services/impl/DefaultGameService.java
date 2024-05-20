@@ -27,7 +27,7 @@ public class DefaultGameService implements GameService {
 
     @Override
     public List<GameModel> findByTitle(String title) {
-        return gameDao.findByTitleIgnoreCase(title);
+        return gameDao.findByTitleContainingIgnoreCase(title);
     }
 
     @Override
