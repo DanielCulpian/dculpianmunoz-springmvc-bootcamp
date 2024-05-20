@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface GamesDao extends JpaRepository<GameModel, Long> {
 
-    List<GameModel> findByTitleIgnoreCase(String title);
+    List<GameModel> findByTitleContainingIgnoreCase(String title);
 
 }
