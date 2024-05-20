@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 @Controller
@@ -27,7 +26,7 @@ public class GameController {
     }
 
     @GetMapping(value = "/game/{id}")
-    public String showGame(@PathVariable Long id, Model model) {
+    public String showGame(Model model, @PathVariable Long id) {
         model.addAttribute("games", gameFacade.findById(id)
                                               .stream()
                                               .collect(Collectors.toList()));
@@ -53,8 +52,8 @@ public class GameController {
     }
 
     @GetMapping(value = "/game")
-    public String showGamesByTitle(@RequestParam String title, Model model){
-        model.addAttribute("games", new ArrayList<>(gameFacade.findByTitle(title)));
+    public String showGamesByTitle(Model model, @RequestParam String title) {
+        model.addAttribute("games", gameFacade.findByTitle(title));
         return "index";
     }
 

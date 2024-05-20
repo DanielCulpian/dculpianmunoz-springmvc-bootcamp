@@ -108,7 +108,7 @@ tr:hover {
     border-bottom: 2px solid white;
 }
 
-.materialBtn {
+.material-btn {
     display: inline-block;
     position: relative;
     padding: 12px 24px;
@@ -125,7 +125,7 @@ tr:hover {
     transition: background-color 0.3s;
 }
 
-.materialBtn::before {
+.material-btn::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -137,21 +137,21 @@ tr:hover {
     opacity: 0;
 }
 
-.materialBtn:active::before {
+.material-btn:active::before {
     transform: translate(-50%, -50%) scale(0);
     opacity: 0.6;
     transition: 0s;
 }
 
-.materialBtn:hover {
+.material-btn:hover {
     background-color: #3700b3;
 }
 
-.materialBtn:focus {
+.material-btn:focus {
     box-shadow: 0 0 0 4px rgba(98, 0, 238, 0.4);
 }
 
-.deleteBtn {
+.delete-btn {
     padding: 6px 12px;
     border: 1px solid red;
     border-radius: 4px;
