@@ -60,8 +60,13 @@ public class GameController {
         return "index";
     }
 
+    @GetMapping(value = "game/new")
+    public String openForm() {
+        return "gameForm";
+    }
+
     @PostMapping(value = "/game/new")
-    public String addNewGame(@ModelAttribute GameDto gameDto){
+    public String addNewGame(@ModelAttribute GameDto gameDto) {
         gameDto = gameFacade.save(gameDto);
 
         return "redirect:/game/" + gameDto.getId();
