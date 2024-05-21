@@ -13,10 +13,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Controller
 public class GameController {
+
+    static final String INDEX = "index";
+    static final String GAME_FORM = "gameForm";
+    static final String GAME_EDIT_FORM = "gameEditForm";
+    static final String GAME_DETAILS = "gameDetails";
+    static final String NOT_FOUND = "notFound";
 
     @Resource
     private GameFacade gameFacade;
@@ -25,7 +32,7 @@ public class GameController {
     public String showGames(Model model) {
         model.addAttribute("games", gameFacade.findAll());
 
-        return "index";
+        return INDEX;
     }
 
     @GetMapping(value = "/game/{id}")
@@ -34,7 +41,7 @@ public class GameController {
                                               .stream()
                                               .collect(Collectors.toList()));
 
-        return "gameDetails";
+        return GAME_DETAILS;
     }
 
     @DeleteMapping(value = "/game/delete/{id}")
@@ -51,24 +58,39 @@ public class GameController {
 
     @GetMapping(value = "/error/404")
     public String show404() {
-        return "notFound";
+        return NOT_FOUND;
     }
 
     @GetMapping(value = "/game")
     public String showGamesByTitle(Model model, @RequestParam String title) {
         model.addAttribute("games", gameFacade.findByTitle(title));
-        return "index";
+        return INDEX;
     }
 
     @GetMapping(value = "game/new")
     public String openForm() {
-        return "gameForm";
+        return GAME_FORM;
     }
 
     @PostMapping(value = "/game/new")
     public String addNewGame(@ModelAttribute GameDto gameDto) {
         return "redirect:/game/" + gameFacade.save(gameDto)
                                              .getId();
+    }
+
+    @GetMapping(value = "/game/edit/{id}")
+    public String openEditForm(Model model, @PathVariable Long id) {
+        model.addAttribute("game", gameFacade.findById(id)
+                                             .orElseThrow(() -> new NoSuchElementException("Game not found with id: " + id)));
+
+        return GAME_EDIT_FORM;
+    }
+
+    @PostMapping(value = "/game/edit/{id}")
+    public String editGame(@ModelAttribute GameDto gameDto) {
+        gameFacade.save(gameDto);
+
+        return "redirect:/";
     }
 
 }

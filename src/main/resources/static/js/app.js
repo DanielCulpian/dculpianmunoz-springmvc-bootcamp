@@ -3,7 +3,7 @@ function deleteAsk(id) {
         fetch(`game/delete/${id}`, {method: 'DELETE'}).then((response) => {
             if (response.ok) {
                 location.replace('/');
-            } else {
+            }  else if(response.status === 404) {
                 location.replace("/error/404");
             }
         })
@@ -12,4 +12,8 @@ function deleteAsk(id) {
 
 function openForm() {
     location.assign('/game/new');
+}
+
+function openEditForm(id) {
+    location.replace(`/game/edit/${id}`)
 }

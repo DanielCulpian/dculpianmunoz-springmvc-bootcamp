@@ -160,6 +160,15 @@ tr:hover {
     outline: none;
 }
 
+.edit-btn {
+    padding: 6px 12px;
+    border: 1px solid blue;
+    border-radius: 4px;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}
+
 /*Responsive Desing*/
 @media (max-width: 768px) {
     .header {
