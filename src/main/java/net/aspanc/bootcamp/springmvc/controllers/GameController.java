@@ -80,7 +80,8 @@ public class GameController {
 
     @GetMapping(value = "/game/edit/{id}")
     public String openEditForm(Model model, @PathVariable Long id) {
-        model.addAttribute("game", gameFacade.findById(id).orElseThrow(() -> new NoSuchElementException("Game not found with id: " + id)));
+        model.addAttribute("game", gameFacade.findById(id)
+                                             .orElseThrow(() -> new NoSuchElementException("Game not found with id: " + id)));
 
         return GAME_EDIT_FORM;
     }
