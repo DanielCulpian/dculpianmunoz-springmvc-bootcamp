@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Controller
@@ -79,15 +80,13 @@ public class GameController {
 
     @GetMapping(value = "/game/edit/{id}")
     public String openEditForm(Model model, @PathVariable Long id) {
-        model.addAttribute("game", gameFacade.findById(id)
-                                             .stream()
-                                             .collect(Collectors.toList())
-                                             .get(0));
+        model.addAttribute("game", gameFacade.findById(id).orElseThrow(() -> new NoSuchElementException("Game not found with id: " + id)));
+
         return GAME_EDIT_FORM;
     }
 
     @PostMapping(value = "/game/edit/{id}")
-    public String editGame(Model model, @ModelAttribute GameDto gameDto) {
+    public String editGame(@ModelAttribute GameDto gameDto) {
         gameFacade.save(gameDto);
 
         return "redirect:/";
