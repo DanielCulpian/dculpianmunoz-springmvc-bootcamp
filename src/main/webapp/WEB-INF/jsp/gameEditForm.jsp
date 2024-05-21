@@ -12,12 +12,15 @@
         <div class="form-overlay" id="popupOverlay">
             <form:form onsubmit="location.reload()" method="post" action="/game/edit/${game.id}" class="form" id="popup" modelAttribute="game">
                 <div class="form-content">
-                    <p>Editing Game ${game.id}</p>
+                    <p>Editing Game: ${game.id}</p>
                     <p>Please, specify all the arguments!</p>
                     <div class="inputs">
-                            <input name="title" type="text" placeholder="Title" id="title-input" required="required" value="${game.title}">
-                            <input name="description" type="text" placeholder="Description" id="description-input" required="required" value="${game.description}">
-                            <input name="steamId" type="number" placeholder="Steam ID" id="number-input" required="required" value="${game.steamId}">
+                        <label>Title</label>
+                        <form:input path="title"/>
+                        <label>Description</label>
+                        <form:input path="description"/>
+                        <label>Steam Id</label>
+                        <form:input path="steamId"/>
                     </div>
                     <input class="form-subm" type="submit" value="Save">
                 </div>
