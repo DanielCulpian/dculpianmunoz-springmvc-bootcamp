@@ -15,11 +15,11 @@
                     <p>Editing Game: ${game.id}</p>
                     <p>Please, specify all the arguments!</p>
                     <div class="inputs">
-                        <label>Title</label>
+                        <form:label path="title">Title</form:label>
                         <form:input path="title"/>
-                        <label>Description</label>
+                        <form:label path="description">Description</form:label>
                         <form:input path="description"/>
-                        <label>Steam Id</label>
+                        <form:label path="steamId">Steam Id</form:label>
                         <form:input path="steamId"/>
                     </div>
                     <input class="form-subm" type="submit" value="Save">
