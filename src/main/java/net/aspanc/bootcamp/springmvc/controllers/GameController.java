@@ -85,7 +85,7 @@ public class GameController {
         gameFacade.save(gameDto);
         model.addAttribute("games", gameFacade.findAll());
 
-        return "index";
+        return "redirect:/";
     }
 
 }

@@ -3,7 +3,7 @@ function deleteAsk(id) {
         fetch(`game/delete/${id}`, {method: 'DELETE'}).then((response) => {
             if (response.ok) {
                 location.replace('/');
-            } else {
+            }  else if(response.status === 404) {
                 location.replace("/error/404");
             }
         })
