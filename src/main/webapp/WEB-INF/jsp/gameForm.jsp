@@ -5,7 +5,7 @@
     <head>
         <meta charset="ISO-8859-1">
         <title>Game Form</title>
-        <link href="/css/gameForm.css" rel="stylesheet"/>
+        <link href="/css/gameform.css" rel="stylesheet"/>
     </head>
     <body>
         <div class="form-overlay" id="popupOverlay">
@@ -14,9 +14,9 @@
                     <p>Add a new Game</p>
                     <p>Please, specify all the arguments!</p>
                     <div class="inputs">
-                        <input name="title" type="text" placeholder="Title" id="titleInput" required="required">
-                        <input name="description" type="text" placeholder="Description" id="descriptionInput" required="required">
-                        <input name="steamId" type="number" placeholder="Steam ID" id="numberInput" required="required">
+                        <input name="title" type="text" placeholder="Title" id="title-input" required="required">
+                        <input name="description" type="text" placeholder="Description" id="description-input" required="required">
+                        <input name="steamId" type="number" placeholder="Steam ID" id="number-input" required="required">
                     </div>
                     <input class="form-subm" type="submit" value="Save">
                 </div>

@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Games</title>
-        <link href="/css/index.css" rel="stylesheet"/>
+        <link href="/css/main.css" rel="stylesheet"/>
         <script src="/js/app.js" defer></script>
     </head>
     <body>

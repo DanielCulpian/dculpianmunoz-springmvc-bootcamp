@@ -5,7 +5,7 @@
     <head>
         <meta charset="ISO-8859-1">
         <title>Game Details</title>
-        <link href="/css/gameDetails.css" rel="stylesheet"/>
+        <link href="/css/gamedetails.css" rel="stylesheet"/>
     </head>
     <body>
         <form class="smart-form">
