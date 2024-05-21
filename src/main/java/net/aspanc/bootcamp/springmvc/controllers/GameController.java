@@ -87,9 +87,8 @@ public class GameController {
     }
 
     @PostMapping(value = "/game/edit/{id}")
-    public String editGame(Model model, @ModelAttribute GameDto gameDto, @PathVariable Long id) {
+    public String editGame(Model model, @ModelAttribute GameDto gameDto) {
         gameFacade.save(gameDto);
-        model.addAttribute("games", gameFacade.findAll());
 
         return "redirect:/";
     }
