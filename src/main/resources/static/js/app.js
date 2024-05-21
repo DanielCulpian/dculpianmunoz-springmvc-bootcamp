@@ -10,6 +10,6 @@ function deleteAsk(id) {
     }
 }
 
-function openForm(){
+function openForm() {
     location.assign('/game/new');
 }
