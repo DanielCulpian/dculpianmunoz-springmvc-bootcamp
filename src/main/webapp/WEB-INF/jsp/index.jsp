@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Games</title>
-        <link href="/css/index.css" rel="stylesheet"/>
+        <link href="/css/main.css" rel="stylesheet"/>
         <script src="/js/app.js" defer></script>
     </head>
     <body>
@@ -13,7 +13,7 @@
             <div class="logo">Steam Games</div>
             <nav>
                 <a href="#home">Home</a>
-                <button class="material-btn">Add New Game</button>
+                <button class="material-btn" onclick="openForm()">Add New Game</button>
             </nav>
         </header>
         <form id="home" class="search-container" action="/game" method="get">
