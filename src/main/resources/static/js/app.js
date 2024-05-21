@@ -11,5 +11,5 @@ function deleteAsk(id) {
 }
 
 function openForm(){
-    location.replace('/game/new');
+    location.assign('/game/new');
 }
