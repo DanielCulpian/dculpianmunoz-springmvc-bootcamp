@@ -13,3 +13,7 @@ function deleteAsk(id) {
 function openForm() {
     location.assign('/game/new');
 }
+
+function openEditForm(id) {
+    location.replace(`/game/edit/${id}`)
+}

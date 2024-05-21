@@ -36,7 +36,7 @@
                             <td><a href="/game/${game.id}">${game.id}</a></td>
                             <td><a href="/game/${game.id}">${game.title}</a></td>
                             <td>
-                                <button class="edit-btn" onclick="">✏️</button>
+                                <button class="edit-btn" onclick="openEditForm(${game.id})">✏️</button>
                             </td>
                             <td>
                                 <button class="delete-btn" onclick="deleteAsk(${game.id})">❌</button>

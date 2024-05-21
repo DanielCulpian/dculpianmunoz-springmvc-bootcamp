@@ -71,4 +71,21 @@ public class GameController {
                                              .getId();
     }
 
+    @GetMapping(value = "/game/edit/{id}")
+    public String openEditForm(Model model, @PathVariable Long id) {
+        model.addAttribute("game", gameFacade.findById(id)
+                                             .stream()
+                                             .collect(Collectors.toList())
+                                             .get(0));
+        return "gameEditForm";
+    }
+
+    @PostMapping(value = "/game/edit/{id}")
+    public String editGame(Model model, @ModelAttribute GameDto gameDto, @PathVariable Long id) {
+        gameFacade.save(gameDto);
+        model.addAttribute("games", gameFacade.findAll());
+
+        return "index";
+    }
+
 }
