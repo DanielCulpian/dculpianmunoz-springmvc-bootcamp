@@ -5,6 +5,7 @@ import net.aspanc.bootcamp.springmvc.facades.GameFacade;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
@@ -68,26 +70,34 @@ public class GameController {
     }
 
     @GetMapping(value = "game/new")
-    public String openForm() {
+    public String openForm(@ModelAttribute GameDto gameDto) {
         return GAME_FORM;
     }
 
     @PostMapping(value = "/game/new")
-    public String addNewGame(@ModelAttribute GameDto gameDto) {
+    public String addNewGame(@ModelAttribute @Valid GameDto gameDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return GAME_FORM;
+        }
+
         return "redirect:/game/" + gameFacade.save(gameDto)
                                              .getId();
     }
 
     @GetMapping(value = "/game/edit/{id}")
-    public String openEditForm(Model model, @PathVariable Long id) {
-        model.addAttribute("game", gameFacade.findById(id)
-                                             .orElseThrow(() -> new NoSuchElementException("Game not found with id: " + id)));
+    public String openEditForm(Model model, @PathVariable Long id, @ModelAttribute GameDto gameDto) {
+        model.addAttribute("gameDto", gameFacade.findById(id)
+                                                .orElseThrow(() -> new NoSuchElementException("Game not found with id: " + id)));
 
         return GAME_EDIT_FORM;
     }
 
     @PostMapping(value = "/game/edit/{id}")
-    public String editGame(@ModelAttribute GameDto gameDto) {
+    public String editGame(@ModelAttribute @Valid GameDto gameDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return GAME_EDIT_FORM;
+        }
+
         gameFacade.save(gameDto);
 
         return "redirect:/";
