@@ -65,7 +65,7 @@ public class GameController {
     }
 
     @GetMapping(value = "/game")
-        public String showGamesByTitle(Model model, @RequestParam String title) {
+    public String showGamesByTitle(Model model, @RequestParam String title) {
         model.addAttribute("games", gameFacade.findByTitle(title));
         return INDEX;
     }
