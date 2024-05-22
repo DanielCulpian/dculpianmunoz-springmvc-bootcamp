@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
@@ -64,7 +65,7 @@ public class GameController {
     }
 
     @GetMapping(value = "/game")
-    public String showGamesByTitle(Model model, @RequestParam String title) {
+        public String showGamesByTitle(Model model, @RequestParam String title) {
         model.addAttribute("games", gameFacade.findByTitle(title));
         return INDEX;
     }
@@ -75,10 +76,14 @@ public class GameController {
     }
 
     @PostMapping(value = "/game/new")
-    public String addNewGame(@ModelAttribute @Valid GameDto gameDto, BindingResult bindingResult) {
+    public String addNewGame(@ModelAttribute @Valid GameDto gameDto, BindingResult bindingResult, RedirectAttributes redirectAttrs) {
         if (bindingResult.hasErrors()) {
             return GAME_FORM;
         }
+
+        gameDto = gameFacade.save(gameDto);
+        redirectAttrs.addAttribute("id", gameDto.getId())
+                     .addFlashAttribute("message", "Game: " + gameDto.getId() + " created!");
 
         return "redirect:/game/" + gameFacade.save(gameDto)
                                              .getId();
@@ -93,12 +98,14 @@ public class GameController {
     }
 
     @PostMapping(value = "/game/edit/{id}")
-    public String editGame(@ModelAttribute @Valid GameDto gameDto, BindingResult bindingResult) {
+    public String editGame(@ModelAttribute @Valid GameDto gameDto, BindingResult bindingResult, RedirectAttributes redirectAttrs) {
         if (bindingResult.hasErrors()) {
             return GAME_EDIT_FORM;
         }
 
-        gameFacade.save(gameDto);
+        gameDto = gameFacade.save(gameDto);
+        redirectAttrs.addAttribute("id", gameDto.getId())
+                     .addFlashAttribute("message", "Game: " + gameDto.getId() + " edited!");
 
         return "redirect:/";
     }

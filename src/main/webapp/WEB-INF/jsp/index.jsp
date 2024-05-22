@@ -21,6 +21,16 @@
             <button class="search-button" type="submit">Search</button>
         </form>
         <div id="smart-div">
+            <div>
+                <c:choose>
+                    <c:when test="${not empty message}">
+                        <p>${message}</p>
+                    </c:when>
+                    <c:otherwise>
+                        <p>Nothing already done</p>
+                    </c:otherwise>
+                </c:choose>
+            </div>
             <table class="game-table">
                 <thead>
                     <tr>

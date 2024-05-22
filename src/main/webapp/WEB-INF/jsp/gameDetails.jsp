@@ -9,6 +9,16 @@
     </head>
     <body>
         <form class="smart-form">
+            <div>
+                <c:choose>
+                    <c:when test="${not empty message}">
+                        <p>${message}</p>
+                    </c:when>
+                    <c:otherwise>
+                        <p>Nothing already done</p>
+                    </c:otherwise>
+                </c:choose>
+            </div>
             <table class="table">
                 <thead>
                 <tr>
