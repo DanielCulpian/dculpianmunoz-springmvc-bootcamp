@@ -1,24 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Games</title>
+        <title><spring:message code="ticket" text="default"/></title>
         <link href="/css/main.css" rel="stylesheet"/>
         <script src="/js/app.js" defer></script>
     </head>
     <body>
         <header class="header">
-            <div class="logo">Steam Games</div>
+            <div class="logo"><spring:message code="logo" text="default"/></div>
             <nav>
-                <a href="#home">Home</a>
-                <button class="material-btn" onclick="openForm()">Add New Game</button>
+                <a href="#home"><spring:message code="nav_home" text="default"/></a>
+                <button class="material-btn" onclick="openForm()"><spring:message code="add_game" text="default"/></button>
             </nav>
         </header>
         <form id="home" class="search-container" action="/game" method="get">
-            <input type="text" class="search-box" id="search-input" name="title" placeholder="Search by title...">
-            <button class="search-button" type="submit">Search</button>
+            <input type="text" class="search-box" id="search-input" name="title" placeholder=<spring:message code="tab_search" text="default"/>/>
+            <button class="search-button" type="submit"><spring:message code="search" text="default"/></button>
         </form>
         <div id="smart-div">
             <div>
@@ -29,10 +30,10 @@
             <table class="game-table">
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Title</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
+                        <th><spring:message code="id_txt" text="default"/></th>
+                        <th><spring:message code="title_txt" text="default"/></th>
+                        <th><spring:message code="edit_txt" text="default"/></th>
+                        <th><spring:message code="delete_txt" text="default"/></th>
                     </tr>
                 </thead>
                 <tbody>
