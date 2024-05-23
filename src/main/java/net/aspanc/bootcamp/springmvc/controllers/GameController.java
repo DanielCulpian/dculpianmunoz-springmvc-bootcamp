@@ -89,7 +89,7 @@ public class GameController {
 
         gameDto = gameFacade.save(gameDto);
         redirectAttrs.addAttribute("id", gameDto.getId())
-                     .addFlashAttribute("message", String.format("%s %s %s", messageSource.getMessage("game_txt", null, LocaleContextHolder.getLocale()), gameDto.getId(), messageSource.getMessage("created_txt", null, LocaleContextHolder.getLocale())));
+                     .addFlashAttribute("message", String.format("%s %s %s", messageSource.getMessage("game_txt", null, LocaleContextHolder.getLocale()), gameDto.getId(), messageSource.getMessage("edited_txt", null, LocaleContextHolder.getLocale())));
 
         return "redirect:/game/" + gameFacade.save(gameDto)
                                              .getId();
@@ -115,7 +115,7 @@ public class GameController {
 
         gameDto = gameFacade.save(gameDto);
         redirectAttrs.addAttribute("id", gameDto.getId())
-                     .addFlashAttribute("message", String.format("%s %s %s", messageSource.getMessage("game_txt", null, LocaleContextHolder.getLocale()), gameDto.getId(), messageSource.getMessage("edited_txt", null, LocaleContextHolder.getLocale())));
+                     .addFlashAttribute("message", String.format("%s %s %s", messageSource.getMessage("game_txt", null, LocaleContextHolder.getLocale()), gameDto.getId(), messageSource.getMessage("created_txt", null, LocaleContextHolder.getLocale())));
 
         return "redirect:/";
     }
