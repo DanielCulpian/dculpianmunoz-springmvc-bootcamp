@@ -10,14 +10,9 @@
     <body>
         <form class="smart-form">
             <div>
-                <c:choose>
-                    <c:when test="${not empty message}">
-                        <p>${message}</p>
-                    </c:when>
-                    <c:otherwise>
-                        <p>Nothing already done</p>
-                    </c:otherwise>
-                </c:choose>
+                <jsp:include page="../tags/messageDisplay.jsp">
+                    <jsp:param name="message" value="${message}"/>
+                </jsp:include>
             </div>
             <table class="table">
                 <thead>

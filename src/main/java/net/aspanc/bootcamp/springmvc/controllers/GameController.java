@@ -76,21 +76,25 @@ public class GameController {
     }
 
     @PostMapping(value = "/game/new")
-    public String addNewGame(@ModelAttribute @Valid GameDto gameDto, BindingResult bindingResult, RedirectAttributes redirectAttrs) {
+    public String addNewGame(@ModelAttribute @Valid GameDto gameDto,
+                             BindingResult bindingResult,
+                             RedirectAttributes redirectAttrs) {
         if (bindingResult.hasErrors()) {
             return GAME_FORM;
         }
 
         gameDto = gameFacade.save(gameDto);
         redirectAttrs.addAttribute("id", gameDto.getId())
-                     .addFlashAttribute("message", "Game: " + gameDto.getId() + " created!");
+                     .addFlashAttribute("message", String.format("Game: %s created!", gameDto.getId()));
 
         return "redirect:/game/" + gameFacade.save(gameDto)
                                              .getId();
     }
 
     @GetMapping(value = "/game/edit/{id}")
-    public String openEditForm(Model model, @PathVariable Long id, @ModelAttribute GameDto gameDto) {
+    public String openEditForm(Model model,
+                               @PathVariable Long id,
+                               @ModelAttribute GameDto gameDto) {
         model.addAttribute("gameDto", gameFacade.findById(id)
                                                 .orElseThrow(() -> new NoSuchElementException("Game not found with id: " + id)));
 
@@ -98,14 +102,16 @@ public class GameController {
     }
 
     @PostMapping(value = "/game/edit/{id}")
-    public String editGame(@ModelAttribute @Valid GameDto gameDto, BindingResult bindingResult, RedirectAttributes redirectAttrs) {
+    public String editGame(@ModelAttribute @Valid GameDto gameDto,
+                           BindingResult bindingResult,
+                           RedirectAttributes redirectAttrs) {
         if (bindingResult.hasErrors()) {
             return GAME_EDIT_FORM;
         }
 
         gameDto = gameFacade.save(gameDto);
         redirectAttrs.addAttribute("id", gameDto.getId())
-                     .addFlashAttribute("message", "Game: " + gameDto.getId() + " edited!");
+                     .addFlashAttribute("message", String.format("Game: %s edited!", gameDto.getId()));
 
         return "redirect:/";
     }
