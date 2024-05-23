@@ -9,6 +9,11 @@
     </head>
     <body>
         <form class="smart-form">
+            <div>
+                <jsp:include page="../tags/messageDisplay.jsp">
+                    <jsp:param name="message" value="${message}"/>
+                </jsp:include>
+            </div>
             <table class="table">
                 <thead>
                 <tr>
