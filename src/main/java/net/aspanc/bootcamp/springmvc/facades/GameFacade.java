@@ -20,6 +20,6 @@ public interface GameFacade {
 
     Boolean existsById(Long id);
 
-    StoreAppDetails getSteamGameById(Integer id);
+    String getSteamGameById(Integer id);
 
 }

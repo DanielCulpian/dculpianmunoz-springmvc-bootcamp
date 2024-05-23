@@ -2,6 +2,7 @@ package net.aspanc.bootcamp.springmvc.controllers;
 
 import com.ibasco.agql.protocols.valve.steam.webapi.pojos.StoreAppDetails;
 import net.aspanc.bootcamp.springmvc.dtos.GameDto;
+import net.aspanc.bootcamp.springmvc.dtos.GameSteamDto;
 import net.aspanc.bootcamp.springmvc.facades.GameFacade;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -124,7 +125,7 @@ public class GameController {
 
     @ResponseBody
     @GetMapping(value = "/game/steam/details/{steamId}")
-    public StoreAppDetails getGameDatailsById(@PathVariable Integer steamId) {
+    public String getGameDatailsById(@PathVariable Integer steamId) {
         return gameFacade.getSteamGameById(steamId);
     }
 
