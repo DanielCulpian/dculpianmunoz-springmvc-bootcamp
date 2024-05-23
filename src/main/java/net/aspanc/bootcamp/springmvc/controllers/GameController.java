@@ -2,6 +2,8 @@ package net.aspanc.bootcamp.springmvc.controllers;
 
 import net.aspanc.bootcamp.springmvc.dtos.GameDto;
 import net.aspanc.bootcamp.springmvc.facades.GameFacade;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +32,8 @@ public class GameController {
 
     @Resource
     private GameFacade gameFacade;
+    @Resource
+    MessageSource messageSource;
 
     @GetMapping(value = "/")
     public String showGames(Model model) {
@@ -85,7 +89,7 @@ public class GameController {
 
         gameDto = gameFacade.save(gameDto);
         redirectAttrs.addAttribute("id", gameDto.getId())
-                     .addFlashAttribute("message", String.format("Game: %s created!", gameDto.getId()));
+                     .addFlashAttribute("message", String.format("%s %s %s", messageSource.getMessage("game_txt", null, LocaleContextHolder.getLocale()), gameDto.getId(), messageSource.getMessage("edited_txt", null, LocaleContextHolder.getLocale())));
 
         return "redirect:/game/" + gameFacade.save(gameDto)
                                              .getId();
@@ -96,7 +100,7 @@ public class GameController {
                                @PathVariable Long id,
                                @ModelAttribute GameDto gameDto) {
         model.addAttribute("gameDto", gameFacade.findById(id)
-                                                .orElseThrow(() -> new NoSuchElementException("Game not found with id: " + id)));
+                                                .orElseThrow(() -> new NoSuchElementException(messageSource.getMessage("game_not_found_exc", null, LocaleContextHolder.getLocale()) + " " + id)));
 
         return GAME_EDIT_FORM;
     }
@@ -111,7 +115,7 @@ public class GameController {
 
         gameDto = gameFacade.save(gameDto);
         redirectAttrs.addAttribute("id", gameDto.getId())
-                     .addFlashAttribute("message", String.format("Game: %s edited!", gameDto.getId()));
+                     .addFlashAttribute("message", String.format("%s %s %s", messageSource.getMessage("game_txt", null, LocaleContextHolder.getLocale()), gameDto.getId(), messageSource.getMessage("created_txt", null, LocaleContextHolder.getLocale())));
 
         return "redirect:/";
     }

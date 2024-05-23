@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="ISO-8859-1">
-        <title>Game Details</title>
+        <title><spring:message code="ticket_details" text="default"/></title>
         <link href="/css/gamedetails.css" rel="stylesheet"/>
     </head>
     <body>
@@ -17,10 +18,10 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Steam ID</th>
+                    <th><spring:message code="id_txt" text="default"/></th>
+                    <th><spring:message code="title_txt" text="default"/></th>
+                    <th><spring:message code="description_txt" text="default"/></th>
+                    <th><spring:message code="steamid_txt" text="default"/></th>
                 </tr>
                 </thead>
                 <tbody>
