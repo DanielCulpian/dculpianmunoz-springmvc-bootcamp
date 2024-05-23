@@ -2,7 +2,4 @@
     <c:when test="${not empty message}">
         <p>${message}</p>
     </c:when>
-    <c:otherwise>
-
-    </c:otherwise>
 </c:choose>
