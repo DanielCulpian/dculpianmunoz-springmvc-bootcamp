@@ -1,22 +1,20 @@
 package net.aspanc.bootcamp.springmvc.converters;
 
 import com.ibasco.agql.protocols.valve.steam.webapi.pojos.StoreAppDetails;
-import net.aspanc.bootcamp.springmvc.dtos.GameSteamDto;
+import net.aspanc.bootcamp.springmvc.dtos.SteamGameDto;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
 
 @Component
-public class StoreAppDetailsToGameSteamDtoConverter implements Converter<StoreAppDetails, GameSteamDto> {
-
-    private final Random random = new Random();
+public class StoreAppDetailsToGameSteamDtoConverter implements Converter<StoreAppDetails, SteamGameDto> {
 
     @Override
-    public GameSteamDto convert(StoreAppDetails storeAppDetails) {
-        return GameSteamDto.builder()
+    public SteamGameDto convert(StoreAppDetails storeAppDetails) {
+        return SteamGameDto.builder()
                            .screenshotUrl(storeAppDetails.getScreenshots()
-                                                         .get(random.nextInt(storeAppDetails.getScreenshots()
+                                                         .get(new Random().nextInt(storeAppDetails.getScreenshots()
                                                                                             .size()))
                                                          .getFullPath())
                            .build();
