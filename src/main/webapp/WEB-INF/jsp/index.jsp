@@ -21,6 +21,11 @@
             <button class="search-button" type="submit">Search</button>
         </form>
         <div id="smart-div">
+            <div>
+                <jsp:include page="../tags/messageDisplay.jsp">
+                    <jsp:param name="message" value="${message}"/>
+                </jsp:include>
+            </div>
             <table class="game-table">
                 <thead>
                     <tr>

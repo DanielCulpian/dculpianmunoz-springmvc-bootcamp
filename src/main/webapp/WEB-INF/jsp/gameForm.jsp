@@ -7,10 +7,11 @@
         <meta charset="ISO-8859-1">
         <title>Game Form</title>
         <link href="/css/gameform.css" rel="stylesheet"/>
+        <script src="/js/app.js" defer></script>
     </head>
     <body>
         <div class="form-overlay" id="popupOverlay">
-            <form:form onsubmit="location.reload()" method="post" action="/game/new" class="form" id="popup" modelAttribute="gameDto">
+            <form:form method="post" action="/game/new" class="form" id="popup" modelAttribute="gameDto">
                 <div class="form-content">
                     <p>Add a new Game</p>
                     <p>Please, specify all the arguments!</p>

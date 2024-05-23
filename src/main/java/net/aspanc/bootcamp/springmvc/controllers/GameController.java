@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
@@ -75,17 +76,25 @@ public class GameController {
     }
 
     @PostMapping(value = "/game/new")
-    public String addNewGame(@ModelAttribute @Valid GameDto gameDto, BindingResult bindingResult) {
+    public String addNewGame(@ModelAttribute @Valid GameDto gameDto,
+                             BindingResult bindingResult,
+                             RedirectAttributes redirectAttrs) {
         if (bindingResult.hasErrors()) {
             return GAME_FORM;
         }
+
+        gameDto = gameFacade.save(gameDto);
+        redirectAttrs.addAttribute("id", gameDto.getId())
+                     .addFlashAttribute("message", String.format("Game: %s created!", gameDto.getId()));
 
         return "redirect:/game/" + gameFacade.save(gameDto)
                                              .getId();
     }
 
     @GetMapping(value = "/game/edit/{id}")
-    public String openEditForm(Model model, @PathVariable Long id, @ModelAttribute GameDto gameDto) {
+    public String openEditForm(Model model,
+                               @PathVariable Long id,
+                               @ModelAttribute GameDto gameDto) {
         model.addAttribute("gameDto", gameFacade.findById(id)
                                                 .orElseThrow(() -> new NoSuchElementException("Game not found with id: " + id)));
 
@@ -93,12 +102,16 @@ public class GameController {
     }
 
     @PostMapping(value = "/game/edit/{id}")
-    public String editGame(@ModelAttribute @Valid GameDto gameDto, BindingResult bindingResult) {
+    public String editGame(@ModelAttribute @Valid GameDto gameDto,
+                           BindingResult bindingResult,
+                           RedirectAttributes redirectAttrs) {
         if (bindingResult.hasErrors()) {
             return GAME_EDIT_FORM;
         }
 
-        gameFacade.save(gameDto);
+        gameDto = gameFacade.save(gameDto);
+        redirectAttrs.addAttribute("id", gameDto.getId())
+                     .addFlashAttribute("message", String.format("Game: %s edited!", gameDto.getId()));
 
         return "redirect:/";
     }
