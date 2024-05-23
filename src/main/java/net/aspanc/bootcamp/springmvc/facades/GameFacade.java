@@ -1,5 +1,6 @@
 package net.aspanc.bootcamp.springmvc.facades;
 
+import com.ibasco.agql.protocols.valve.steam.webapi.pojos.StoreAppDetails;
 import net.aspanc.bootcamp.springmvc.dtos.GameDto;
 
 import java.util.List;
@@ -18,5 +19,7 @@ public interface GameFacade {
     GameDto save(GameDto gameDto);
 
     Boolean existsById(Long id);
+
+    StoreAppDetails getSteamGameById(Integer id);
 
 }

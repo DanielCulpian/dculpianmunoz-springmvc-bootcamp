@@ -1,5 +1,6 @@
 package net.aspanc.bootcamp.springmvc.controllers;
 
+import com.ibasco.agql.protocols.valve.steam.webapi.pojos.StoreAppDetails;
 import net.aspanc.bootcamp.springmvc.dtos.GameDto;
 import net.aspanc.bootcamp.springmvc.facades.GameFacade;
 import org.springframework.context.MessageSource;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
@@ -118,6 +120,12 @@ public class GameController {
                      .addFlashAttribute("message", String.format("%s %s %s", messageSource.getMessage("game_txt", null, LocaleContextHolder.getLocale()), gameDto.getId(), messageSource.getMessage("created_txt", null, LocaleContextHolder.getLocale())));
 
         return "redirect:/";
+    }
+
+    @ResponseBody
+    @GetMapping(value = "/game/steam/details/{steamId}")
+    public StoreAppDetails getGameDatailsById(@PathVariable Integer steamId) {
+        return gameFacade.getSteamGameById(steamId);
     }
 
 }
