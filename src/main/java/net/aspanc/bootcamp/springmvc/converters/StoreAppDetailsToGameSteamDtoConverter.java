@@ -14,8 +14,7 @@ public class StoreAppDetailsToGameSteamDtoConverter implements Converter<StoreAp
     public SteamGameDto convert(StoreAppDetails storeAppDetails) {
         return SteamGameDto.builder()
                            .screenshotUrl(storeAppDetails.getScreenshots()
-                                                         .get(new Random().nextInt(storeAppDetails.getScreenshots()
-                                                                                            .size()))
+                                                         .get(new Random().nextInt(storeAppDetails.getScreenshots().size()))
                                                          .getFullPath())
                            .build();
     }

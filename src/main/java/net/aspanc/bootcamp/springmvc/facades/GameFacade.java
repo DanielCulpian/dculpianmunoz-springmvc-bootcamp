@@ -1,6 +1,5 @@
 package net.aspanc.bootcamp.springmvc.facades;
 
-import com.ibasco.agql.protocols.valve.steam.webapi.pojos.StoreAppDetails;
 import net.aspanc.bootcamp.springmvc.dtos.GameDto;
 
 import java.util.List;

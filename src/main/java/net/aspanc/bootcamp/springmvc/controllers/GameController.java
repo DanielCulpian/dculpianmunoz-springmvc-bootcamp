@@ -1,8 +1,6 @@
 package net.aspanc.bootcamp.springmvc.controllers;
 
-import com.ibasco.agql.protocols.valve.steam.webapi.pojos.StoreAppDetails;
 import net.aspanc.bootcamp.springmvc.dtos.GameDto;
-import net.aspanc.bootcamp.springmvc.dtos.GameSteamDto;
 import net.aspanc.bootcamp.springmvc.facades.GameFacade;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -32,11 +30,10 @@ public class GameController {
     static final String GAME_EDIT_FORM = "gameEditForm";
     static final String GAME_DETAILS = "gameDetails";
     static final String NOT_FOUND = "notFound";
-
-    @Resource
-    private GameFacade gameFacade;
     @Resource
     MessageSource messageSource;
+    @Resource
+    private GameFacade gameFacade;
 
     @GetMapping(value = "/")
     public String showGames(Model model) {
