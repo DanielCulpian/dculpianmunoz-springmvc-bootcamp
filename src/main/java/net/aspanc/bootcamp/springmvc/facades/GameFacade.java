@@ -19,4 +19,6 @@ public interface GameFacade {
 
     Boolean existsById(Long id);
 
+    String getSteamGameById(Integer id, String countryCode, String language);
+
 }
