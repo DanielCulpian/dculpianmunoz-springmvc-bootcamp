@@ -1,9 +1,12 @@
 package net.aspanc.bootcamp.springmvc.facades.impl;
 
+import com.ibasco.agql.protocols.valve.steam.webapi.interfaces.SteamNews;
 import com.ibasco.agql.protocols.valve.steam.webapi.interfaces.SteamStorefront;
+import com.ibasco.agql.protocols.valve.steam.webapi.pojos.SteamNewsItem;
 import com.ibasco.agql.protocols.valve.steam.webapi.pojos.StoreAppDetails;
 import net.aspanc.bootcamp.springmvc.dtos.GameDto;
 import net.aspanc.bootcamp.springmvc.dtos.SteamGameDto;
+import net.aspanc.bootcamp.springmvc.dtos.SteamNewsDto;
 import net.aspanc.bootcamp.springmvc.facades.GameFacade;
 import net.aspanc.bootcamp.springmvc.models.GameModel;
 import net.aspanc.bootcamp.springmvc.services.GameService;
@@ -25,9 +28,13 @@ public class DefaultGameFacade implements GameFacade {
     @Resource
     private Converter<StoreAppDetails, SteamGameDto> gameSteamDtoConverter;
     @Resource
+    private Converter<SteamNewsItem, SteamNewsDto> gameSteamNewsDtoConverter;
+    @Resource
     private GameService gameService;
     @Resource
     private SteamStorefront steamStorefront;
+    @Resource
+    private SteamNews steamNews;
 
     @Override
     public List<GameDto> findAll() {
@@ -69,10 +76,19 @@ public class DefaultGameFacade implements GameFacade {
 
     @Override
     public String getSteamGameById(Integer id, String countryCode, String language) {
-        SteamGameDto steamGameDto = gameSteamDtoConverter.convert(steamStorefront.getAppDetails(id, countryCode, language)
-                                                                                 .join());
+        SteamGameDto steamGameDto = gameSteamDtoConverter.convert(steamStorefront.getAppDetails(id, countryCode, language).join());
+
         assert steamGameDto != null;
         return steamGameDto.getScreenshotUrl();
+    }
+
+    @Override
+    public List<SteamNewsDto> getSteamNewsById(Integer id) {
+        return steamNews.getNewsForApp(id, -1, -1, 5, "")
+                        .join()
+                        .stream()
+                        .map(gameSteamNewsDtoConverter::convert)
+                        .collect(Collectors.toList());
     }
 
 }

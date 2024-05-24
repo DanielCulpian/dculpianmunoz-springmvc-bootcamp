@@ -1,6 +1,7 @@
 package net.aspanc.bootcamp.springmvc.controllers;
 
 import net.aspanc.bootcamp.springmvc.dtos.GameDto;
+import net.aspanc.bootcamp.springmvc.dtos.SteamNewsDto;
 import net.aspanc.bootcamp.springmvc.facades.GameFacade;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
@@ -124,6 +126,12 @@ public class GameController {
     @GetMapping(value = "/game/steam/details/{steamId}")
     public String getGameDatailsById(@PathVariable Integer steamId) {
         return gameFacade.getSteamGameById(steamId, LocaleContextHolder.getLocale().getCountry(), LocaleContextHolder.getLocale().getLanguage());
+    }
+
+    @GetMapping(value = "/game/steam/news/{steamId}")
+    @ResponseBody
+    public List<SteamNewsDto> getGameNewsById(@PathVariable Integer steamId) {
+        return gameFacade.getSteamNewsById(steamId);
     }
 
 }
