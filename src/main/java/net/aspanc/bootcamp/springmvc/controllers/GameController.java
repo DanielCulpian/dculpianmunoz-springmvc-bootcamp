@@ -123,7 +123,7 @@ public class GameController {
     @ResponseBody
     @GetMapping(value = "/game/steam/details/{steamId}")
     public String getGameDatailsById(@PathVariable Integer steamId) {
-        return gameFacade.getSteamGameById(steamId);
+        return gameFacade.getSteamGameById(steamId, LocaleContextHolder.getLocale().getCountry(), LocaleContextHolder.getLocale().getLanguage());
     }
 
 }

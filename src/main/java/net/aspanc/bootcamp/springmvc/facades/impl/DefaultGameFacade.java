@@ -68,8 +68,8 @@ public class DefaultGameFacade implements GameFacade {
     }
 
     @Override
-    public String getSteamGameById(Integer id) {
-        SteamGameDto steamGameDto = gameSteamDtoConverter.convert(steamStorefront.getAppDetails(id)
+    public String getSteamGameById(Integer id, String countryCode, String language) {
+        SteamGameDto steamGameDto = gameSteamDtoConverter.convert(steamStorefront.getAppDetails(id, countryCode, language)
                                                                                  .join());
         assert steamGameDto != null;
         return steamGameDto.getScreenshotUrl();
