@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
@@ -29,11 +30,10 @@ public class GameController {
     static final String GAME_EDIT_FORM = "gameEditForm";
     static final String GAME_DETAILS = "gameDetails";
     static final String NOT_FOUND = "notFound";
-
-    @Resource
-    private GameFacade gameFacade;
     @Resource
     MessageSource messageSource;
+    @Resource
+    private GameFacade gameFacade;
 
     @GetMapping(value = "/")
     public String showGames(Model model) {
@@ -118,6 +118,12 @@ public class GameController {
                      .addFlashAttribute("message", String.format("%s %s %s", messageSource.getMessage("game_txt", null, LocaleContextHolder.getLocale()), gameDto.getId(), messageSource.getMessage("created_txt", null, LocaleContextHolder.getLocale())));
 
         return "redirect:/";
+    }
+
+    @ResponseBody
+    @GetMapping(value = "/game/steam/details/{steamId}")
+    public String getGameDatailsById(@PathVariable Integer steamId) {
+        return gameFacade.getSteamGameById(steamId, LocaleContextHolder.getLocale().getCountry(), LocaleContextHolder.getLocale().getLanguage());
     }
 
 }
