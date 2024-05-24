@@ -21,6 +21,11 @@ import java.util.stream.Collectors;
 @Component
 public class DefaultGameFacade implements GameFacade {
 
+    private static final Integer MAX_LENGTH = -1;
+    private static final Integer END_DATE = -1;
+    private static final Integer COUNT = 5;
+    private static final String FEEDS = "";
+
     @Resource
     private Converter<GameModel, GameDto> gameModelToDataConverter;
     @Resource
@@ -84,7 +89,7 @@ public class DefaultGameFacade implements GameFacade {
 
     @Override
     public List<SteamNewsDto> getSteamNewsById(Integer id) {
-        return steamNews.getNewsForApp(id, -1, -1, 5, "")
+        return steamNews.getNewsForApp(id, MAX_LENGTH, END_DATE, COUNT, FEEDS)
                         .join()
                         .stream()
                         .map(gameSteamNewsDtoConverter::convert)

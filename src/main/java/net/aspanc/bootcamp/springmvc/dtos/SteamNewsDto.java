@@ -13,13 +13,9 @@ import javax.validation.constraints.NotNull;
 @Builder
 public class SteamNewsDto {
 
-    @NotNull
     private String title;
-    @NotNull
     private String url;
-    @NotNull
     private String author;
-    @NotNull
     private String contents;
 
 }

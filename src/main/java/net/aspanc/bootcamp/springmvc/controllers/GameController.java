@@ -1,10 +1,13 @@
 package net.aspanc.bootcamp.springmvc.controllers;
 
+import com.ibasco.agql.core.exceptions.ResponseException;
+import io.netty.handler.codec.http.HttpResponseStatus;
 import net.aspanc.bootcamp.springmvc.dtos.GameDto;
 import net.aspanc.bootcamp.springmvc.dtos.SteamNewsDto;
 import net.aspanc.bootcamp.springmvc.facades.GameFacade;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
@@ -128,10 +132,15 @@ public class GameController {
         return gameFacade.getSteamGameById(steamId, LocaleContextHolder.getLocale().getCountry(), LocaleContextHolder.getLocale().getLanguage());
     }
 
-    @GetMapping(value = "/game/steam/news/{steamId}")
+
     @ResponseBody
+    @GetMapping(value = "/game/steam/news/{steamId}")
     public List<SteamNewsDto> getGameNewsById(@PathVariable Integer steamId) {
-        return gameFacade.getSteamNewsById(steamId);
+        try{
+           return gameFacade.getSteamNewsById(steamId);
+        }catch (IllegalArgumentException illegalArgumentException){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
     }
 
 }
