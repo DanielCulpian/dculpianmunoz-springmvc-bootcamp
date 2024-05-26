@@ -23,7 +23,7 @@ public class DefaultGameFacade implements GameFacade {
 
     private static final Integer MAX_LENGTH = -1;
     private static final Integer END_DATE = -1;
-    private static final Integer COUNT = 5;
+    private static final Integer COUNT = 10;
     private static final String FEEDS = "";
 
     @Resource

@@ -1,25 +1,28 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+    font-family: 'Roboto', sans-serif;
+    background-color: #fafafa;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
 }
 
-.smart-form {
-    background-color: #fff;
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.card-panel {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 80%;    max-width: 900px;
 }
 
 .table {
     width: 100%;
-    border-collapse: collapse;
     margin-top: 20px;
 }
 
@@ -46,8 +49,27 @@ body {
     color: #555;
 }
 
+.center-align {
+    text-align: center;
+}
+
+.header {
+    font-weight: 400;
+}
+
+.responsive-img {
+    max-width: 100%;
+    height: auto;
+}
+
+.collection-item {
+    border: none;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
 @media (max-width: 768px) {
-    .smart-form {
+    .card-panel {
         padding: 10px;
     }
 
