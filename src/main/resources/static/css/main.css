@@ -117,7 +117,7 @@ tr:hover {
     font-weight: 500;
     color: #fff;
     background-color: #6200ea;
-    border: none;
+    border: 4px black solid;
     border-radius: 4px;
     cursor: pointer;
     overflow: hidden;

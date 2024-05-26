@@ -15,11 +15,12 @@
             <div class="logo"><spring:message code="logo" text="default"/></div>
             <nav>
                 <a href="#home"><spring:message code="nav_home" text="default"/></a>
+                <a href="https://steamdb.info/">SteamDB</a>
                 <button class="material-btn" onclick="openForm()"><spring:message code="add_game" text="default"/></button>
             </nav>
         </header>
         <form id="home" class="search-container" action="/game" method="get">
-            <input type="text" class="search-box" id="search-input" name="title" placeholder=<spring:message code="tab_search" text="default"/>/>
+            <input type="text" class="search-box" id="search-input" name="title" placeholder='<spring:message code="tab_search" text="default"/>'/>
             <button class="search-button" type="submit"><spring:message code="search" text="default"/></button>
         </form>
         <div id="smart-div">

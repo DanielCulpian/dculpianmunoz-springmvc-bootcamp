@@ -28,6 +28,7 @@
                         <form:errors path="steamId"/>
                     </div>
                     <input class="form-subm" type="submit" value="<spring:message code="save_txt" text="default"/>">
+                    <a class="btn-volver" href="<%= request.getContextPath() %>/"><spring:message code="return_txt" text="default"/></a>
                 </div>
             </form:form>
         </div>

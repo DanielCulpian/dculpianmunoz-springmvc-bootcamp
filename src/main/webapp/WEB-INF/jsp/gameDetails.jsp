@@ -16,6 +16,7 @@
     </head>
     <body>
         <div class="container">
+            <a class="btn-volver" href="<%= request.getContextPath() %>/"><spring:message code="return_txt" text="default"/></a>
             <div class="section">
                 <form class="card-panel">
                     <jsp:include page="../tags/messageDisplay.jsp">
