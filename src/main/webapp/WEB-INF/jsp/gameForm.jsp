@@ -7,6 +7,7 @@
     <head>
         <meta charset="ISO-8859-1">
         <title><spring:message code="ticket_form" text="default"/></title>
+        <link rel="icon" type="image/x-icon" href="/images/icon.ico">
         <link href="/css/gameform.css" rel="stylesheet"/>
         <script src="/js/app.js" defer></script>
     </head>

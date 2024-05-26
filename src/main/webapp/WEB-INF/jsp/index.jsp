@@ -5,6 +5,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <link rel="icon" type="image/x-icon" href="/images/icon.ico">
         <title><spring:message code="ticket" text="default"/></title>
         <link href="/css/main.css" rel="stylesheet"/>
         <script src="/js/app.js" defer></script>
