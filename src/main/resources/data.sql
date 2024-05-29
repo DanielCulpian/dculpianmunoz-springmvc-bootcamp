@@ -1,5 +1,3 @@
-use app;
-
 INSERT INTO games (title, description, steam_id) VALUES ("Counter-Strike: Global Offensive", "A modernized version of the classic Counter-Strike.", 730);
 INSERT INTO games (title, description, steam_id) VALUES ("Dota 2", "A competitive game of action and strategy.", 570);
 INSERT INTO games (title, description, steam_id) VALUES ("PUBG: Battlegrounds", "An online multiplayer battle royale game.", 578080);
