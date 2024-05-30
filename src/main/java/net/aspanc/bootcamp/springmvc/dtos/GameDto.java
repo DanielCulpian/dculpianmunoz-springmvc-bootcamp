@@ -24,4 +24,6 @@ public class GameDto {
     @Digits(integer = 9, fraction = 0)
     private Integer steamId;
 
+    private Boolean played;
+
 }

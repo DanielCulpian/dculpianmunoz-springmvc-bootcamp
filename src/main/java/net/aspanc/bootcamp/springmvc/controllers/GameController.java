@@ -111,6 +111,22 @@ public class GameController {
         return GAME_EDIT_FORM;
     }
 
+    @GetMapping(value = "/game/editPlayed/{id}")
+    public void editPlayedValue(@PathVariable Long id) {
+        GameDto gameDto = gameFacade.findById(id)
+                .stream()
+                .collect(Collectors.toList())
+                .get(0);
+
+        if(gameDto.getPlayed()){
+            gameDto.setPlayed(false);
+            gameFacade.save(gameDto);
+        }else{
+            gameDto.setPlayed(true);
+            gameFacade.save(gameDto);
+        }
+    }
+
     @PostMapping(value = "/game/edit/{id}")
     public String editGame(@ModelAttribute @Valid GameDto gameDto,
                            BindingResult bindingResult,

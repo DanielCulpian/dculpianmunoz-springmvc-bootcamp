@@ -19,6 +19,7 @@ public class GameServiceTests {
     private final static String DESCRIPTION = "B1";
     private final static String NEW_DESCRIPTION = "C";
     private final static Integer STEAM_ID = 1;
+    private final static Boolean FINISHED = true;
 
     @Resource
     private GameService gameService;
@@ -32,6 +33,7 @@ public class GameServiceTests {
         gameModelAux.setTitle(TITLE);
         gameModelAux.setDescription(DESCRIPTION);
         gameModelAux.setSteamId(STEAM_ID);
+        gameModelAux.setPlayed(FINISHED);
         gameModelAux = gameService.save(gameModelAux);
     }
 
@@ -56,6 +58,7 @@ public class GameServiceTests {
                             Assert.assertEquals(TITLE, game.getTitle());
                             Assert.assertEquals(DESCRIPTION, game.getDescription());
                             Assert.assertEquals(STEAM_ID, game.getSteamId());
+                            Assert.assertEquals(FINISHED, game.getPlayed());
                         },
                         Assert::fail
         );

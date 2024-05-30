@@ -18,6 +18,7 @@ public class GameModelToDataConverter implements Converter<GameModel, GameDto> {
                       .title(gameModel.getTitle())
                       .description(gameModel.getDescription())
                       .steamId(gameModel.getSteamId())
+                      .played(gameModel.getPlayed())
                       .build();
     }
 

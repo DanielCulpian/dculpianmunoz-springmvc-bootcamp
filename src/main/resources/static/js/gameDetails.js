@@ -1,7 +1,6 @@
 $(document).ready(function() {
-    const gameId = getGameIdFromURL();
-
-    console.log(gameId);
+    updateCheckBox();
+    const gameId = getGameId();
 
     if (gameId) {
         $.ajax({
@@ -24,12 +23,10 @@ $(document).ready(function() {
     }
 });
 
-function getGameIdFromURL() {
+function getGameId() {
         var tdElement = document.getElementById("steamid");
 
         var tdText = tdElement.innerText || tdElement.textContent;
-
-        console.log(tdText);
 
         return tdText;
 }
@@ -50,3 +47,24 @@ function renderNewsItems(newsItems) {
     });
 }
 
+function updateCheckBox(){
+    var checkBox = document.getElementById('finishedCB');
+
+    checkBox.checked = checkBox.value === 'true';
+}
+
+function updateDataBaseValueCheckBox(){
+    var url = window.location.href;
+
+    var id = url.match(/\/(\d+)$/)[1];
+
+    const request = '/game/editPlayed/' + id;
+
+    fetch(request, {
+        method: 'GET'
+    })
+        .then(response => {
+                location.replace(url);
+        })
+
+}
