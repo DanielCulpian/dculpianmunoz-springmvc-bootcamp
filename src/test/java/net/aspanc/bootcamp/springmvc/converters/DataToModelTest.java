@@ -11,6 +11,7 @@ public class DataToModelTest {
     private final static String TITLE = "A";
     private final static String DESCRIPTION = "B1";
     private final static Integer STEAM_ID = 1;
+    private final static Boolean FINISHED = true;
 
     @Test
     public void checkConvertedObject(){
@@ -19,6 +20,7 @@ public class DataToModelTest {
                 .title(TITLE)
                 .description(DESCRIPTION)
                 .steamId(STEAM_ID)
+                .played(FINISHED)
                 .build();
 
         GameDataToModelConverter gameDataToModelConverter = new GameDataToModelConverter();
@@ -30,5 +32,6 @@ public class DataToModelTest {
         Assert.assertEquals(TITLE, gameModel.getTitle());
         Assert.assertEquals(DESCRIPTION, gameModel.getDescription());
         Assert.assertEquals(STEAM_ID, gameModel.getSteamId());
+        Assert.assertEquals(FINISHED, gameModel.getPlayed());
     }
 }

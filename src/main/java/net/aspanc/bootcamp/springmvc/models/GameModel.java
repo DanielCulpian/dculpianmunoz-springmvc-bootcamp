@@ -34,4 +34,6 @@ public class GameModel {
     @Column(name = "steam_id")
     private Integer steamId;
 
+    private Boolean played;
+
 }
